@@ -63,7 +63,7 @@
                 </el-form-item>
             </el-form>
             <br>
-            <el-table :data="tableData" v-loading="loading">
+            <el-table :data="tableData" v-loading="loading" empty-text="Not found apartments ">
                 <el-table-column prop="name" label="Mame" width="180"/>
                 <el-table-column prop="price" label="Price"/>
                 <el-table-column prop="bedrooms" label="Bedrooms"/>
