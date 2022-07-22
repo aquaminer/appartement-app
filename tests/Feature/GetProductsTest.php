@@ -38,7 +38,7 @@ class GetProductsTest extends TestCase
 
         $apartments = Apartment::query()->scopes([$param => $value])->get()->toArray();
 
-        $this->get(route('products-get', [$param => $value]))
+        $this->get(route('apartments-get', [$param => $value]))
             ->assertJson($apartments);
     }
 
@@ -55,7 +55,7 @@ class GetProductsTest extends TestCase
 
         $apartments = collect([$apartment1, $apartment2])->toArray();
 
-        $this->get(route('products-get', ['name' => 'name']))
+        $this->get(route('apartments-get', ['name' => 'name']))
             ->assertJson($apartments);
     }
 
@@ -71,12 +71,12 @@ class GetProductsTest extends TestCase
         ])->create();
 
 
-        $this->get(route('products-get', ['price' => [14, 15]]))
+        $this->get(route('apartments-get', ['price' => [14, 15]]))
             ->assertJson(
                 collect([$apartment2])->toArray()
             );
 
-        $this->get(route('products-get', ['price' => [10, 15]]))
+        $this->get(route('apartments-get', ['price' => [10, 15]]))
             ->assertJson(
                 collect([$apartment1, $apartment2])->toArray()
             );
@@ -91,7 +91,7 @@ class GetProductsTest extends TestCase
             'storeys' => 17,
         ])->count(3)->create();
 
-        $this->get(route('products-get', [
+        $this->get(route('apartments-get', [
             'bathrooms' => 15,
             'storeys' => 17,
         ]))
