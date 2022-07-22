@@ -7,6 +7,10 @@ import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
+import ElementUI from 'element-plus';
+import {CircleClose} from '@element-plus/icons-vue';
+import 'element-plus/theme-chalk/index.css';
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -16,6 +20,8 @@ createInertiaApp({
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
+            .use(ElementUI)
+            .component(CircleClose.name, CircleClose)
             .mount(el);
     },
 });
