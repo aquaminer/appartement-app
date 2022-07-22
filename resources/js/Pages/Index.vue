@@ -63,7 +63,7 @@
                 </el-form-item>
             </el-form>
             <br>
-            <el-table :data="tableData">
+            <el-table :data="tableData" v-loading="loading">
                 <el-table-column prop="name" label="Mame" width="180"/>
                 <el-table-column prop="price" label="Price"/>
                 <el-table-column prop="bedrooms" label="Bedrooms"/>
@@ -78,13 +78,13 @@
 <script>
 import debounce from 'lodash.debounce'
 
-
 export default {
     name: "Index",
     data() {
         return {
             filters: {price: []},
             tableData: [],
+            loading: false
         }
     },
     mounted() {
@@ -97,8 +97,13 @@ export default {
     },
 
     methods: {
-        async fetch() {
-            this.tableData = (await axios.get(route('apartments-get'), {params: this.filters})).data
+        fetch() {
+            this.loading = true;
+
+            axios.get(route('apartments-get'), {params: this.filters}).then(({data}) => {
+                this.tableData = data
+            }).finally(() => this.loading = false)
+
         }
     },
     watch: {
