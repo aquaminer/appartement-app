@@ -30,8 +30,6 @@
                     </el-icon>
                 </el-form-item>
                 <el-form-item label="Bathrooms">
-                    <el-checkbox/>
-
                     <el-input-number v-model="filters.bathrooms"
                                      style="margin-left: 10px">
                     </el-input-number>
