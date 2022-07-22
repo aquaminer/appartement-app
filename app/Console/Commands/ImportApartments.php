@@ -16,7 +16,7 @@ class ImportApartments extends Command
      *
      * @var string
      */
-    protected $signature = 'import:apartments {file=data.csv}';
+    protected $signature = 'import:apartments {file=resources/data.csv}';
 
     /**
      * The console command description.
