@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/apartments', [\App\Http\Controllers\ApartmentController::class, 'get'])->name('products-get');
